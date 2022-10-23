@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.follow_app">
    <application
-        android:label="follow_app"
+        android:label="Follow"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

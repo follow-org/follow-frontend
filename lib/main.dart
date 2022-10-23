@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
-import 'package:follow_app/views/screens/auth/login_screen.dart';
+import 'package:follow_app/views/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: Get.isDarkMode ? AppColors.dark : AppColors.light,
-      home: const LoginScreen(),
+      home: const SplashScreen(),
     );
   }
 }

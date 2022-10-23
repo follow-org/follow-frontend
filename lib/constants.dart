@@ -8,8 +8,8 @@ class AppColors {
   static const Color black = Color(0xFF000000);
 
   static const Color yellow = Color(0xFFFFE600);
-  static const Color blue = Colors.blueAccent;
-
+  static const Color blue = Color(0xFF00FFFF);
+  static const Color pink = Color(0xFFFF0080);
   static const backgroundColor = Colors.black;
   static const buttonColor = Color(0xFFFFFFFF);
   static const borderColor = Colors.grey;

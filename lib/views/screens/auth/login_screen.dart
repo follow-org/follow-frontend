@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
+import 'package:follow_app/views/screens/auth/create_password_screen.dart';
 import 'package:follow_app/views/screens/auth/signup_screen.dart';
+import 'package:follow_app/views/widgets/password_icon.dart';
 import 'package:follow_app/views/widgets/text_input_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,8 +15,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
-
   final TextEditingController _passwordController = TextEditingController();
+  bool isPasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -42,27 +44,47 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 25.verticalSpace(),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFieldWidget(
-                    hint: 'Enter your email',
-                    textController: _emailController,
-                  ),
+                CustomTextField(
+                  textController: _emailController,
+                  label: "Email",
                 ),
                 25.verticalSpace(),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFieldWidget(
-                    hint: 'Enter your password',
-                    textController: _emailController,
-                    isObscure: true,
+                CustomTextField(
+                  textController: _passwordController,
+                  label: "Password",
+                  isObscure: isPasswordVisible,
+                  suffixIcon: PasswordIcon(
+                    showPassword: !isPasswordVisible,
+                    onTap: () {
+                      setState(() {
+                        isPasswordVisible = !isPasswordVisible;
+                      });
+                    },
                   ),
+                ),
+                15.verticalSpace(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        const CreatePasswordScreen()
+                            .navigate(isInfinity: false);
+                      },
+                      child: const Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.buttonColor,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 30.verticalSpace(),
                 Container(
-                  width: MediaQuery.of(context).size.width - 40,
+                  width: MediaQuery.of(context).size.width,
                   height: 50,
                   decoration: const BoxDecoration(
                     color: Colors.pinkAccent,
@@ -84,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                15.verticalSpace(),
+                20.verticalSpace(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -94,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        SignupScreen().navigate(isInfinity: true);
+                        const SignupScreen().navigate(isInfinity: false);
                       },
                       child: const Text(
                         'Register',
@@ -131,17 +153,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Image.asset(
-                        "assets/images/google.png",
-                        height: 55,
+                      InkWell(
+                        onTap: () {},
+                        child: Image.asset(
+                          "assets/images/google.png",
+                          height: 65,
+                          scale: 0.8,
+                        ),
                       ),
-                      Image.asset(
-                        "assets/images/facebook.png",
-                        height: 35,
+                      InkWell(
+                        onTap: () {},
+                        child: Image.asset(
+                          "assets/images/facebook.png",
+                          height: 40,
+                          scale: 0.8,
+                        ),
                       ),
-                      Image.asset(
-                        "assets/images/apple.png",
-                        height: 65,
+                      InkWell(
+                        onTap: () {},
+                        child: Image.asset(
+                          "assets/images/apple.png",
+                          height: 65,
+                          scale: 0.8,
+                        ),
                       ),
                     ],
                   ),

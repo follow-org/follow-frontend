@@ -2,14 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
 import 'package:follow_app/views/screens/auth/login_screen.dart';
+import 'package:follow_app/views/widgets/password_icon.dart';
 import 'package:follow_app/views/widgets/text_input_field.dart';
 
-class SignupScreen extends StatelessWidget {
-  SignupScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
   final TextEditingController _usernameController = TextEditingController();
+
+  bool isPasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -28,77 +38,43 @@ class SignupScreen extends StatelessWidget {
                   Image.asset("assets/images/logo.png"),
                   20.verticalSpace(),
                   const Text(
-                    'Register',
+                    'Create Account',
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w700,
                       color: AppColors.white,
                     ),
                   ),
-                  const SizedBox(
-                    height: 25,
+                  35.verticalSpace(),
+                  CustomTextField(
+                    textController: _usernameController,
+                    label: "Username",
                   ),
-                  Stack(
-                    children: [
-                      const CircleAvatar(
-                        radius: 64,
-                        backgroundColor: Colors.grey,
-                      ),
-                      Positioned(
-                        bottom: -10,
-                        left: 80,
-                        child: IconButton(
-                          onPressed: () {},
-                          // authController.pickImage(),
-                          icon: const Icon(
-                            Icons.add_a_photo,
-                            color: AppColors.white,
-                          ),
-                        ),
-                      ),
-                    ],
+                  25.verticalSpace(),
+                  CustomTextField(
+                    textController: _emailController,
+                    label: "Email",
                   ),
-                  const SizedBox(
-                    height: 35,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    child: TextFieldWidget(
-                      hint: 'Enter your name',
-                      textController: _usernameController,
+                  25.verticalSpace(),
+                  CustomTextField(
+                    textController: _passwordController,
+                    label: "Password",
+                    isObscure: isPasswordVisible,
+                    suffixIcon: PasswordIcon(
+                      showPassword: !isPasswordVisible,
+                      onTap: () {
+                        setState(() {
+                          isPasswordVisible = !isPasswordVisible;
+                        });
+                      },
                     ),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  35.verticalSpace(),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    child: TextFieldWidget(
-                      hint: 'Enter your email',
-                      textController: _emailController,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    child: TextFieldWidget(
-                      hint: 'Enter your password',
-                      textController: _passwordController,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 40,
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: Colors.pinkAccent,
+                      color: AppColors.pink,
                       borderRadius: BorderRadius.all(
                         Radius.circular(5),
                       ),
@@ -115,9 +91,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  15.verticalSpace(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -129,20 +103,70 @@ class SignupScreen extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                        ),
+                        onTap: () {
+                          const LoginScreen().navigate(isInfinity: true);
+                        },
                         child: const Text(
                           'Login',
                           style: TextStyle(
                             fontSize: 20,
                             color: AppColors.buttonColor,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
                     ],
+                  ),
+                  25.verticalSpace(),
+                  const Text(
+                    "Or",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.white,
+                    ),
+                  ),
+                  15.verticalSpace(),
+                  const Text(
+                    "Sign-up with",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.white,
+                    ),
+                  ),
+                  25.verticalSpace(),
+                  Padding(
+                    padding: 50.paddingHorizontal(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Image.asset(
+                            "assets/images/google.png",
+                            height: 65,
+                            scale: 0.8,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Image.asset(
+                            "assets/images/facebook.png",
+                            height: 40,
+                            scale: 0.8,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Image.asset(
+                            "assets/images/apple.png",
+                            height: 65,
+                            scale: 0.8,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

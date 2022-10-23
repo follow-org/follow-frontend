@@ -1,10 +1,46 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:follow_app/constants.dart';
+// import 'package:follow_app/helper/util_extensions.dart';
+
+// class CustomTextField extends StatelessWidget {
+//   final TextEditingController controller;
+//   final String labelText;
+//   const CustomTextField(
+//       {super.key, required this.controller, required this.labelText});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return TextFormField(
+//       controller: controller,
+//       decoration: InputDecoration(
+//         labelText: labelText,
+//         labelStyle: const TextStyle(
+//           color: AppColors.white,
+//           fontSize: 16,
+//         ),
+
+//         border: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(8),
+//           borderSide: const BorderSide(
+//             color: AppColors.white,
+//             width: 1.0,
+//             style: BorderStyle.solid,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:follow_app/constants.dart';
+import 'package:follow_app/helper/util_extensions.dart';
 
-class TextFieldWidget extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final Widget? icon;
-  final String hint;
+  final String label;
   final String? errorText;
   final bool isObscure;
   final TextInputType? inputType;
@@ -17,7 +53,7 @@ class TextFieldWidget extends StatelessWidget {
   final bool autoFocus;
   final TextAlign? textAlign;
   final TextInputAction? inputAction;
-  final TextStyle? hintTextStyle;
+  final TextStyle? labelTextStyle;
   final int? maxLength;
   final int? maxLines;
   Widget? suffixIcon;
@@ -27,14 +63,14 @@ class TextFieldWidget extends StatelessWidget {
   TextStyle? errorStyle;
   String obsecureCharacter;
 
-  TextFieldWidget({
+  CustomTextField({
     Key? key,
     this.icon,
     this.textCapitalization = TextCapitalization.none,
     this.errorText,
     required this.textController,
     this.inputType,
-    required this.hint,
+    required this.label,
     this.isObscure = false,
     this.padding = const EdgeInsets.all(0),
     this.hintColor = Colors.grey,
@@ -43,7 +79,7 @@ class TextFieldWidget extends StatelessWidget {
     this.onChanged,
     this.autoFocus = false,
     this.inputAction,
-    this.hintTextStyle,
+    this.labelTextStyle,
     this.maxLength = 55,
     this.maxLines,
     this.prefixIcon,
@@ -70,39 +106,56 @@ class TextFieldWidget extends StatelessWidget {
       obscuringCharacter: obsecureCharacter,
       inputFormatters: inputFormatter,
       textAlign: textAlign ?? TextAlign.left,
-      style: Theme.of(context)
-          .textTheme
-          .bodyText2
-          ?.copyWith(color: AppColors.black),
+      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            color: AppColors.white,
+          ),
       decoration: InputDecoration(
         counterText: '',
-        hintText: hint,
-        hintStyle: hintTextStyle ??
-            const TextStyle(
-              color: Colors.grey,
-            ),
+        labelText: label,
+        labelStyle: labelTextStyle ??
+            Theme.of(context).textTheme.headline6?.copyWith(
+                  color: AppColors.borderColor,
+                ),
         errorText: errorText,
         errorMaxLines: 2,
         errorStyle: errorStyle ??
-            const TextStyle(
-              fontSize: 12,
-              color: Colors.redAccent,
-            ),
-        icon: icon,
-        suffixIcon: focusNode?.hasFocus == true ? suffixIcon : null,
+            Theme.of(context).textTheme.bodyText1?.copyWith(
+                  fontSize: 12,
+                  color: Colors.redAccent,
+                ),
+        suffixIcon: suffixIcon ?? const SizedBox(),
         prefixIcon: prefixIcon,
-        contentPadding: const EdgeInsets.fromLTRB(16, 14, 12, 14),
+        contentPadding: 20.paddingAll(),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
             color: AppColors.white,
+            width: 1.0,
+            style: BorderStyle.solid,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: AppColors.pink,
+            width: 1.0,
+            style: BorderStyle.solid,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: AppColors.white,
+            width: 1.0,
+            style: BorderStyle.solid,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
             color: AppColors.white,
-            width: 2.0,
+            width: 1.0,
+            style: BorderStyle.solid,
           ),
         ),
       ),
