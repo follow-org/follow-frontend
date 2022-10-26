@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
 import 'package:follow_app/views/screens/auth/login_screen.dart';
+import 'package:follow_app/views/screens/home/home_screen.dart';
 import 'package:follow_app/views/widgets/password_icon.dart';
 import 'package:follow_app/views/widgets/text_input_field.dart';
 
@@ -79,8 +80,12 @@ class _SignupScreenState extends State<SignupScreen> {
                         Radius.circular(5),
                       ),
                     ),
-                    child: const InkWell(
-                      child: Center(
+                    child: InkWell(
+                      onTap: () {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        const HomeScreen().navigate(isInfinity: true);
+                      },
+                      child: const Center(
                         child: Text(
                           'Register',
                           style: TextStyle(

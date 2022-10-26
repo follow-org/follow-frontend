@@ -4,6 +4,7 @@ import 'package:follow_app/helper/util_extensions.dart';
 import 'package:follow_app/views/screens/auth/create_password_screen.dart';
 import 'package:follow_app/views/screens/auth/forgot_password_screen.dart';
 import 'package:follow_app/views/screens/auth/signup_screen.dart';
+import 'package:follow_app/views/screens/home/home_screen.dart';
 import 'package:follow_app/views/widgets/password_icon.dart';
 import 'package:follow_app/views/widgets/text_input_field.dart';
 
@@ -96,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: InkWell(
                     onTap: () {
                       FocusManager.instance.primaryFocus?.unfocus();
+                      const HomeScreen().navigate(isInfinity: true);
                     },
                     child: const Center(
                       child: Text(
