@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:follow_app/views/screens/add_video_screen.dart';
+
+const pages = [
+  Text('Home Screen'),
+  Text('Saerch Screen Screen'),
+  AddVideoScreen(),
+  Text('Messages Screen'),
+  Text('Profile Screen')
+];
 
 class AppColors {
   AppColors._();
