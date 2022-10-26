@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
 import 'package:follow_app/views/screens/auth/create_password_screen.dart';
+import 'package:follow_app/views/screens/auth/forgot_password_screen.dart';
 import 'package:follow_app/views/screens/auth/signup_screen.dart';
 import 'package:follow_app/views/widgets/password_icon.dart';
 import 'package:follow_app/views/widgets/text_input_field.dart';
@@ -68,8 +69,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        const CreatePasswordScreen()
-                            .navigate(isInfinity: false);
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        ForgotPasswordScreen().navigate(isInfinity: false);
                       },
                       child: const Text(
                         "Forgot Password?",
@@ -93,7 +94,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
                     child: const Center(
                       child: Text(
                         'Login',
@@ -116,6 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     InkWell(
                       onTap: () {
+                        FocusManager.instance.primaryFocus?.unfocus();
                         const SignupScreen().navigate(isInfinity: false);
                       },
                       child: const Text(

@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
-import 'package:follow_app/views/widgets/password_icon.dart';
+import 'package:follow_app/views/screens/auth/create_password_screen.dart';
 import 'package:follow_app/views/widgets/text_input_field.dart';
 
-class CreatePasswordScreen extends StatefulWidget {
-  const CreatePasswordScreen({super.key});
+class ForgotPasswordScreen extends StatelessWidget {
+  final TextEditingController _emailController = TextEditingController();
 
-  @override
-  State<CreatePasswordScreen> createState() => _CreatePasswordScreenState();
-}
-
-class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
-  final TextEditingController _newController = TextEditingController();
-  final TextEditingController _confirmController = TextEditingController();
-
-  bool isNewVisible = true;
-  bool isConfirmVisible = true;
+  ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,42 +27,29 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                 Image.asset("assets/images/logo.png"),
                 50.verticalSpace(),
                 const Text(
-                  'Create New Password',
+                  'Forgot Password',
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w700,
                     color: AppColors.white,
                   ),
                 ),
+                20.verticalSpace(),
+                const Text(
+                  'A reset password link will be sent to this email. Click on the link to create a new password.',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
                 35.verticalSpace(),
                 CustomTextField(
-                  textController: _newController,
-                  label: "New Password",
-                  isObscure: isNewVisible,
-                  suffixIcon: PasswordIcon(
-                    showPassword: !isNewVisible,
-                    onTap: () {
-                      setState(() {
-                        isNewVisible = !isNewVisible;
-                      });
-                    },
-                  ),
+                  textController: _emailController,
+                  label: "Email",
                 ),
                 25.verticalSpace(),
-                CustomTextField(
-                  textController: _confirmController,
-                  label: "Confirm New Password",
-                  isObscure: isConfirmVisible,
-                  suffixIcon: PasswordIcon(
-                    showPassword: !isConfirmVisible,
-                    onTap: () {
-                      setState(() {
-                        isConfirmVisible = !isConfirmVisible;
-                      });
-                    },
-                  ),
-                ),
-                30.verticalSpace(),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
@@ -82,10 +60,13 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                     ),
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      const CreatePasswordScreen().navigate(isInfinity: false);
+                    },
                     child: const Center(
                       child: Text(
-                        'Create New Password',
+                        'Send Reset Password Link',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
