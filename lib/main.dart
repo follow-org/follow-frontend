@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: Get.isDarkMode ? AppColors.dark : AppColors.light,
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 }
