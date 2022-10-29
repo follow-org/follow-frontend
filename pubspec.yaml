@@ -35,6 +35,12 @@ dependencies:
   animated_splash_screen:
   image_picker: 
   video_player: 
+  firebase_storage: 
+  cloud_firestore: 
+  firebase_core: 
+  firebase_auth: 
+  video_compress: 
+
 
 
   # The following adds the Cupertino Icons font to your application.

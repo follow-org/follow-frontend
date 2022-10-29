@@ -97,6 +97,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: InkWell(
                     onTap: () {
                       FocusManager.instance.primaryFocus?.unfocus();
+                      authController.loginUser(
+                        _emailController.text,
+                        _passwordController.text,
+                      );
                       const HomeScreen().navigate(isInfinity: true);
                     },
                     child: const Center(

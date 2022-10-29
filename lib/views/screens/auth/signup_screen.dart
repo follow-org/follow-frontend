@@ -82,6 +82,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     child: InkWell(
                       onTap: () {
+                        authController.registerUser(
+                          _usernameController.text,
+                          _emailController.text,
+                          _passwordController.text,
+                          // authController.profilePhoto,
+                        );
                         FocusManager.instance.primaryFocus?.unfocus();
                         const HomeScreen().navigate(isInfinity: true);
                       },
