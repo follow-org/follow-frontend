@@ -42,57 +42,66 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
-            30.verticalSpace(),
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 1.5,
+              height: MediaQuery.of(context).size.height,
               child: VideoPlayer(controller),
             ),
-            30.verticalSpace(),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                    width: MediaQuery.of(context).size.width - 20,
-                    child: CustomTextField(
-                      label: 'Song Name',
-                      textController: _songController,
-                      icon: const Icon(Icons.music_note),
-                    ),
-                  ),
-                  20.verticalSpace(),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                    width: MediaQuery.of(context).size.width - 20,
-                    child: CustomTextField(
-                      label: 'Caption',
-                      textController: _captionController,
-                      icon: const Icon(Icons.closed_caption),
-                    ),
-                  ),
-                  15.verticalSpace(),
-                  ElevatedButton(
-                    onPressed: () async {
-                      await uploadVideoController.uploadVideo(
-                        _songController.text,
-                        _captionController.text,
-                        widget.videoPath,
-                      );
-                    },
-                    child: const Text(
-                      'Share',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
+            Positioned(
+              bottom: 0,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.black45,
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      30.verticalSpace(),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        width: MediaQuery.of(context).size.width - 20,
+                        child: CustomTextField(
+                          label: 'Song Name',
+                          textController: _songController,
+                          icon: const Icon(Icons.music_note),
+                          hintColor: AppColors.black,
+                        ),
                       ),
-                    ),
+                      20.verticalSpace(),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        width: MediaQuery.of(context).size.width - 20,
+                        child: CustomTextField(
+                          label: 'Caption',
+                          textController: _captionController,
+                          icon: const Icon(Icons.closed_caption),
+                          hintColor: AppColors.black,
+                        ),
+                      ),
+                      15.verticalSpace(),
+                      ElevatedButton(
+                        onPressed: () async {
+                          await uploadVideoController.uploadVideo(
+                            _songController.text,
+                            _captionController.text,
+                            widget.videoPath,
+                          );
+                        },
+                        child: const Text(
+                          'Share',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ],

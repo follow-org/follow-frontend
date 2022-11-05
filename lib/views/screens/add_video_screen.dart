@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/controllers/upload_video_controller.dart';
+import 'package:follow_app/helper/util_extensions.dart';
 import 'package:follow_app/views/screens/confirm_screen.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,14 +10,24 @@ import 'package:image_picker/image_picker.dart';
 class AddVideoScreen extends StatefulWidget {
   const AddVideoScreen({super.key});
 
-  pickVideo(ImageSource src, BuildContext context) async {
-    final video = await ImagePicker().pickVideo(source: src);
-    if (video != null) {
-      ConfirmScreen(
-        videoFile: File(video.path),
-        videoPath: video.path,
-      ).navigate(isInfinity: false);
-    }
+  @override
+  State<AddVideoScreen> createState() => _AddVideoScreenState();
+}
+
+class _AddVideoScreenState extends State<AddVideoScreen> {
+  final UploadVideoController uploadVideoController =
+      Get.put(UploadVideoController());
+  XFile? video;
+
+  pickVideo(ImageSource src) async {
+    video = await ImagePicker().pickVideo(source: src).whenComplete(() {
+      if (video != null) {
+        ConfirmScreen(
+          videoFile: File(video!.path),
+          videoPath: video!.path,
+        ).navigate(isInfinity: false);
+      }
+    });
   }
 
   showOptionsDialog(BuildContext context) {
