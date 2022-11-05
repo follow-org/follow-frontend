@@ -9,25 +9,13 @@ import 'package:image_picker/image_picker.dart';
 class AddVideoScreen extends StatefulWidget {
   const AddVideoScreen({super.key});
 
-  @override
-  State<AddVideoScreen> createState() => _AddVideoScreenState();
-}
-
-class _AddVideoScreenState extends State<AddVideoScreen> {
-  final UploadVideoController uploadVideoController =
-      Get.put(UploadVideoController());
-
-  pickVideo(ImageSource src, context) async {
+  pickVideo(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
     if (video != null) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => ConfirmScreen(
-            videoFile: File(video.path),
-            videoPath: video.path,
-          ),
-        ),
-      );
+      ConfirmScreen(
+        videoFile: File(video.path),
+        videoPath: video.path,
+      ).navigate(isInfinity: false);
     }
   }
 
@@ -37,7 +25,7 @@ class _AddVideoScreenState extends State<AddVideoScreen> {
       builder: (context) => SimpleDialog(
         children: [
           SimpleDialogOption(
-            onPressed: () => pickVideo(ImageSource.gallery, context),
+            onPressed: () => pickVideo(ImageSource.gallery),
             child: Row(
               children: const [
                 Icon(Icons.image),
@@ -52,7 +40,7 @@ class _AddVideoScreenState extends State<AddVideoScreen> {
             ),
           ),
           SimpleDialogOption(
-            onPressed: () => pickVideo(ImageSource.camera, context),
+            onPressed: () => pickVideo(ImageSource.camera),
             child: Row(
               children: const [
                 Icon(Icons.camera_alt),

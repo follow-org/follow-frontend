@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:follow_app/constants.dart';
-import '../../widgets/custom_icon.dart';
+import 'package:follow_app/views/widgets/custom_icon.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,24 +27,30 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.white,
         currentIndex: pageIdx,
-        items: const [
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home, size: 30),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.search, size: 30),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: CustomIcon(),
+            icon: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Image.asset(
+                'assets/images/appIcon.png',
+                height: 55,
+              ),
+            ),
             label: '',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.message, size: 30),
             label: 'Message',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person, size: 30),
             label: 'Profile',
           ),
