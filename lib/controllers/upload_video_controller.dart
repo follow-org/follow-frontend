@@ -19,7 +19,7 @@ class UploadVideoController extends GetxController {
   Future<String> _uploadVideoToStorage(String id, String videoPath) async {
     Reference reference = firebaseStorage.ref().child('videos').child(id);
     UploadTask uploadTask = reference.putFile(await _compressVideo(videoPath));
-    TaskSnapshot snap = uploadTask.snapshot;
+    TaskSnapshot snap = await uploadTask;
     String downloadUrl = snap.ref.fullPath;
     return downloadUrl;
   }
@@ -29,15 +29,14 @@ class UploadVideoController extends GetxController {
     return thumbnail;
   }
 
-  // Future<String> _uploadImageToStorage(String id, String videoPath) async {
-  //   Reference ref = firebaseStorage.ref().child('thumnails').child(id);
+  Future<String> _uploadImageToStorage(String id, String videoPath) async {
+    Reference ref = firebaseStorage.ref().child('thumbnails').child(id);
 
-  //   UploadTask uploadTask = ref.putFile(await _getThumbnail(videoPath));
-  //   TaskSnapshot snap = uploadTask.snapshot;
-  //   String downloadUrl = snap.ref.fullPath;
-  //   print(downloadUrl);
-  //   return downloadUrl;
-  // }
+    UploadTask uploadTask = ref.putFile(await _getThumbnail(videoPath));
+    TaskSnapshot snap = await uploadTask;
+    String downloadUrl = await snap.ref.getDownloadURL();
+    return downloadUrl;
+  }
 
   // function to upload video
   uploadVideo(String songName, String caption, String videoPath) async {
@@ -45,34 +44,32 @@ class UploadVideoController extends GetxController {
       String uid = firebaseAuth.currentUser!.uid;
       DocumentSnapshot userDoc =
           await firestore.collection('users').doc(uid).get();
-      String videoUrl = await _uploadVideoToStorage(uid, videoPath);
-      // String thumbnail = await _uploadImageToStorage(uid, videoPath);
-      // get id
-      // var allDocs = await firestore.collection('videos').get();
-      // // int len = allDocs.docs.length;
+      var allDocs = await firestore.collection('videos').get();
+      int len = allDocs.docs.length;
+      String videoUrl = await _uploadVideoToStorage("video $len", videoPath);
+      String thumbnail = await _uploadImageToStorage("video $len", videoPath);
 
       Video video = Video(
-        username: (userDoc.data()! as Map<String, dynamic>)['name'],
-        uid: uid,
-        id: uid,
-        likes: [],
-        commentCount: 0,
-        shareCount: 0,
-        songName: songName,
-        caption: caption,
-        videoUrl: videoUrl,
-        thumbnail: "",
-      );
+          username: (userDoc.data()! as Map<String, dynamic>)['name'],
+          uid: uid,
+          id: "Video $len",
+          likes: [],
+          commentCount: 0,
+          shareCount: 0,
+          songName: songName,
+          caption: caption,
+          videoUrl: videoUrl,
+          thumbnail: thumbnail,
+          profilePhoto:
+              (userDoc.data()! as Map<String, dynamic>)['profilePhoto']);
 
-      await firestore
-          .collection('videos')
-          .doc(uid)
-          .set(
+      await firestore.collection('videos').doc('Video $len').set(
             video.toJson(),
-          )
-          .then(
-            (value) => Get.back(),
           );
+      Get.back;
+      // .then(
+      //   (value) => Get.back(),
+      // );
     } catch (e) {
       Get.snackbar(
         'Error Uploading Video',

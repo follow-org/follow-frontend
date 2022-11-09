@@ -40,12 +40,17 @@ dependencies:
   firebase_core: 
   firebase_auth: 
   video_compress: 
+  flutter_cache_manager:
 
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  chewie: ^1.3.5
+  card_swiper: ^2.0.4
+  timeago: ^3.3.0
+  cached_network_image: ^3.2.2
 
 dev_dependencies:
   flutter_test:

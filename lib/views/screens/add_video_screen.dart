@@ -21,6 +21,7 @@ class _AddVideoScreenState extends State<AddVideoScreen> {
 
   pickVideo(ImageSource src) async {
     video = await ImagePicker().pickVideo(source: src).whenComplete(() {
+      setState(() {});
       if (video != null) {
         ConfirmScreen(
           videoFile: File(video!.path),

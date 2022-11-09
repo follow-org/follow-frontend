@@ -11,7 +11,7 @@ class Video {
   String caption;
   String videoUrl;
   String thumbnail;
-  // String? profilePhoto;
+  String? profilePhoto;
 
   Video({
     required this.username,
@@ -24,6 +24,7 @@ class Video {
     required this.caption,
     required this.videoUrl,
     required this.thumbnail,
+    this.profilePhoto,
   });
 
   Map<String, dynamic> toJson() => {
@@ -53,6 +54,7 @@ class Video {
       thumbnail: snapshot['thumbnail'],
       songName: snapshot['songName'],
       caption: snapshot['caption'],
+      profilePhoto: snapshot['profilePhoto'],
     );
   }
 }
