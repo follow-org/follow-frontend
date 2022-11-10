@@ -43,11 +43,11 @@ class SearchScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   User user = searchController.searchedUsers[index];
                   return InkWell(
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => ProfileScreen(uid: user.uid),
-                      ),
-                    ),
+                    // onTap: () => Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => ProfileScreen(uid: user.uid),
+                    //   ),
+                    // ),
                     child: ListTile(
                       leading: const CircleAvatar(
                         backgroundImage: NetworkImage('Test'

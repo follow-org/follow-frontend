@@ -108,9 +108,9 @@ class OptionsScreen extends StatelessWidget {
                     ),
                   ),
                   10.verticalSpace(),
-                  CircleAnimation(
-                    child: Text('None'),
-                  ),
+                  // CircleAnimation(
+                  //   child: Text('None'),
+                  // ),
                 ],
               ),
               // Column(

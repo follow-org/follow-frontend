@@ -19,7 +19,7 @@ class AuthController extends GetxController {
   late Rx<File?> _pickedImage;
 
   File? get profilePhoto => _pickedImage.value;
-  User get user => _user.value!;
+  // User get user => _user.value!;
 
   @override
   void onReady() {
@@ -72,7 +72,7 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       Get.snackbar(
-        'Error in creating account',
+        'Error while logging in',
         e.toString(),
       );
     }
@@ -116,5 +116,5 @@ class AuthController extends GetxController {
 }
 
 void signOut() async {
-    await firebaseAuth.signOut();
-  }
+  await firebaseAuth.signOut();
+}
