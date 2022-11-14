@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:follow_app/controllers/auth_controller.dart';
+import 'package:follow_app/helper/util_extensions.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import '../../constants.dart';
@@ -18,6 +20,19 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final ProfileController profileController = Get.put(ProfileController());
+  final AuthController authController = Get.put(AuthController());
+
+  final List thumbnails = [
+    "https://images.unsplash.com/photo-1481841580057-e2b9927a05c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "https://images.unsplash.com/photo-1658632302217-984d432b4d38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "https://images.unsplash.com/photo-1426543881949-cbd9a76740a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "https://images.unsplash.com/photo-1550155864-3033f844da36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGNvdXBsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    "https://images.unsplash.com/photo-1511898290398-cee3038fa7a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTN8fGNvdXBsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    "https://images.unsplash.com/photo-1503516459261-40c66117780a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
+    "https://images.unsplash.com/photo-1541518926503-a6fdabd94147?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM3fHxjb3VwbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    "https://images.unsplash.com/photo-1558037865-65d4bcdc37ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fGNvdXBsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    "https://images.unsplash.com/photo-1558039872-91f1cb2a4769?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+  ];
 
   @override
   void initState() {
@@ -27,201 +42,194 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
-    // return GetBuilder<ProfileController>(
-    //     init: ProfileController(),
-    //     builder: (controller) {
-    //       if (controller.user.isEmpty) {
-    //         return const Center(
-    //           child: CircularProgressIndicator(),
-    //         );
-    //       }
-    //       return Scaffold(
-    //         appBar: AppBar(
-    //           backgroundColor: Colors.black12,
-    //           leading: const Icon(
-    //             Icons.person_add_alt_1_outlined,
-    //           ),
-    //           actions: const [
-    //             Icon(Icons.more_horiz),
-    //           ],
-    //           title: Text(
-    //             controller.user['name'],
-    //             style: const TextStyle(
-    //               fontWeight: FontWeight.bold,
-    //               color: Colors.white,
-    //             ),
-    //           ),
-    //         ),
-    //         body: SafeArea(
-    //           child: SingleChildScrollView(
-    //             child: Column(
-    //               children: [
-    //                 SizedBox(
-    //                   child: Column(
-    //                     children: [
-    //                       Row(
-    //                         mainAxisAlignment: MainAxisAlignment.center,
-    //                         children: [
-    //                           ClipOval(
-    //                             child: CachedNetworkImage(
-    //                               fit: BoxFit.cover,
-    //                               imageUrl: controller.user['profilePhoto'],
-    //                               height: 100,
-    //                               width: 100,
-    //                               placeholder: (context, url) =>
-    //                                   const CircularProgressIndicator(),
-    //                               errorWidget: (context, url, error) =>
-    //                                   const Icon(
-    //                                 Icons.error,
-    //                               ),
-    //                             ),
-    //                           )
-    //                         ],
-    //                       ),
-    //                       const SizedBox(
-    //                         height: 15,
-    //                       ),
-    //                       Row(
-    //                         mainAxisAlignment: MainAxisAlignment.center,
-    //                         children: [
-    //                           Column(
-    //                             children: [
-    //                               Text(
-    //                                 controller.user['following'],
-    //                                 style: const TextStyle(
-    //                                   fontSize: 20,
-    //                                   fontWeight: FontWeight.bold,
-    //                                 ),
-    //                               ),
-    //                               const SizedBox(height: 5),
-    //                               const Text(
-    //                                 'Following',
-    //                                 style: TextStyle(
-    //                                   fontSize: 14,
-    //                                 ),
-    //                               ),
-    //                             ],
-    //                           ),
-    //                           Container(
-    //                             color: Colors.black54,
-    //                             width: 1,
-    //                             height: 15,
-    //                             margin: const EdgeInsets.symmetric(
-    //                               horizontal: 15,
-    //                             ),
-    //                           ),
-    //                           Column(
-    //                             children: [
-    //                               Text(
-    //                                 controller.user['followers'],
-    //                                 style: const TextStyle(
-    //                                   fontSize: 20,
-    //                                   fontWeight: FontWeight.bold,
-    //                                 ),
-    //                               ),
-    //                               const SizedBox(height: 5),
-    //                               const Text(
-    //                                 'Followers',
-    //                                 style: TextStyle(
-    //                                   fontSize: 14,
-    //                                 ),
-    //                               ),
-    //                             ],
-    //                           ),
-    //                           Container(
-    //                             color: Colors.black54,
-    //                             width: 1,
-    //                             height: 15,
-    //                             margin: const EdgeInsets.symmetric(
-    //                               horizontal: 15,
-    //                             ),
-    //                           ),
-    //                           Column(
-    //                             children: [
-    //                               Text(
-    //                                 controller.user['likes'],
-    //                                 style: const TextStyle(
-    //                                   fontSize: 20,
-    //                                   fontWeight: FontWeight.bold,
-    //                                 ),
-    //                               ),
-    //                               const SizedBox(height: 5),
-    //                               const Text(
-    //                                 'Likes',
-    //                                 style: TextStyle(
-    //                                   fontSize: 14,
-    //                                 ),
-    //                               ),
-    //                             ],
-    //                           ),
-    //                         ],
-    //                       ),
-    //                       const SizedBox(
-    //                         height: 15,
-    //                       ),
-    //                       Container(
-    //                         width: 140,
-    //                         height: 47,
-    //                         decoration: BoxDecoration(
-    //                           border: Border.all(
-    //                             color: Colors.black12,
-    //                           ),
-    //                         ),
-    //                         child: Center(
-    //                           child: InkWell(
-    //                             onTap: () {
-    //                               if (widget.uid == authController.user.uid) {
-    //                                 // authController.signOut();
-    //                               } else {
-    //                                 controller.followUser();
-    //                               }
-    //                             },
-    //                             child: Text(
-    //                               widget.uid == authController.user.uid
-    //                                   ? 'Sign Out'
-    //                                   : controller.user['isFollowing']
-    //                                       ? 'Unfollow'
-    //                                       : 'Follow',
-    //                               style: const TextStyle(
-    //                                 fontSize: 15,
-    //                                 fontWeight: FontWeight.bold,
-    //                               ),
-    //                             ),
-    //                           ),
-    //                         ),
-    //                       ),
-    //                       const SizedBox(
-    //                         height: 25,
-    //                       ),
-    //                       // video list
-    //                       GridView.builder(
-    //                         shrinkWrap: true,
-    //                         physics: const NeverScrollableScrollPhysics(),
-    //                         itemCount: controller.user['thumbnails'].length,
-    //                         gridDelegate:
-    //                             const SliverGridDelegateWithFixedCrossAxisCount(
-    //                           crossAxisCount: 2,
-    //                           childAspectRatio: 1,
-    //                           crossAxisSpacing: 5,
-    //                         ),
-    //                         itemBuilder: (context, index) {
-    //                           String thumbnail =
-    //                               controller.user['thumbnails'][index];
-    //                           return CachedNetworkImage(
-    //                             imageUrl: thumbnail,
-    //                             fit: BoxFit.cover,
-    //                           );
-    //                         },
-    //                       )
-    //                     ],
-    //                   ),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //         ),
-    //       );
-    //     });
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black87,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Icon(Icons.more_horiz),
+          ),
+        ],
+        title: const Text(
+          "Ankit Singh",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                child: Column(
+                  children: [
+                    20.verticalSpace(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipOval(
+                          child: CachedNetworkImage(
+                            fit: BoxFit.cover,
+                            imageUrl: thumbnails[0],
+                            height: 100,
+                            width: 100,
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            errorWidget: (context, url, error) => const Icon(
+                              Icons.error,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: const [
+                            Text(
+                              "20",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              'Following',
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          color: Colors.black54,
+                          width: 1,
+                          height: 15,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ),
+                        ),
+                        Column(
+                          children: const [
+                            Text(
+                              "37",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              'Followers',
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          color: Colors.black54,
+                          width: 1,
+                          height: 15,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ),
+                        ),
+                        Column(
+                          children: const [
+                            Text(
+                              "10",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              'Subscribers',
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      width: 140,
+                      height: 47,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black12,
+                        ),
+                      ),
+                      child: Center(
+                        child: InkWell(
+                          onTap: () {
+                            // if (widget.uid == authController.user.uid) {
+                            authController.signOut();
+                            // } else {
+                            //   controller.followUser();
+                            // }
+                          },
+                          child: const Text(
+                            // widget.uid == authController.user.uid
+                            //     ? 'Sign Out'
+                            //     : controller.user['isFollowing']
+                            //         ? 'Unfollow'
+                            //         : 'Follow',
+                            "Sign Out",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    // video list
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: thumbnails.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: 0.9,
+                          crossAxisSpacing: 5,
+                        ),
+                        itemBuilder: (context, index) {
+                          String thumbnail = thumbnails[index];
+                          return CachedNetworkImage(
+                            imageUrl: thumbnail,
+                            fit: BoxFit.cover,
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

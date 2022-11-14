@@ -96,6 +96,9 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                             _captionController.text,
                             widget.videoPath,
                           );
+                          Get.snackbar(
+                              "Upload video", "Post shared successfully");
+                          pop();
                         },
                         child: const Text(
                           'Share',

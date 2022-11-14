@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:follow_app/constants.dart';
 import 'package:follow_app/views/screens/profile_screen.dart';
 import 'package:get/get.dart';
 import '../../controllers/search_controller.dart';
@@ -7,6 +8,12 @@ import '../../models/user.dart';
 class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);
 
+  final List thumbnails = [
+    "https://images.unsplash.com/photo-1481841580057-e2b9927a05c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "https://images.unsplash.com/photo-1658632302217-984d432b4d38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    "https://images.unsplash.com/photo-1426543881949-cbd9a76740a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+  ];
+
   final SearchController searchController = Get.put(SearchController());
 
   @override
@@ -14,7 +21,7 @@ class SearchScreen extends StatelessWidget {
     return Obx(() {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: AppColors.black,
           title: TextFormField(
             decoration: const InputDecoration(
               filled: false,
@@ -49,10 +56,11 @@ class SearchScreen extends StatelessWidget {
                     //   ),
                     // ),
                     child: ListTile(
-                      leading: const CircleAvatar(
-                        backgroundImage: NetworkImage('Test'
-                            // user.profilePhoto,
-                            ),
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          thumbnails[index],
+                          // user.profilePhoto,
+                        ),
                       ),
                       title: Text(
                         user.name,

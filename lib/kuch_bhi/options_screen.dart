@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
 
 import '../views/widgets/circle_animation.dart';
@@ -11,27 +12,37 @@ class OptionsScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(),
+          const SizedBox(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 children: [
-                  SizedBox(height: 110),
+                  const SizedBox(height: 110),
                   Row(
                     children: [
-                      CircleAvatar(
-                        child: Icon(Icons.person, size: 18),
+                      const CircleAvatar(
                         radius: 16,
+                        child: Icon(Icons.person, size: 18),
                       ),
-                      SizedBox(width: 6),
-                      Text('sabrina_girl'),
-                      SizedBox(width: 10),
-                      Icon(Icons.verified, size: 15),
-                      SizedBox(width: 6),
+                      const SizedBox(width: 6),
+                      const Text(
+                        'sabrina_girl',
+                        style: TextStyle(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      const Icon(
+                        Icons.verified,
+                        size: 15,
+                        color: Colors.blue,
+                      ),
+                      const SizedBox(width: 6),
                       TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           'Follow',
                           style: TextStyle(
                             color: Colors.white,
@@ -41,15 +52,31 @@ class OptionsScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(width: 6),
-                  Text('FOLLOW is beautiful and fast 💙❤💛 ..'),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'FOLLOW is beautiful and fast 💙❤💛 ..',
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
                   SizedBox(height: 10),
                   Row(
                     children: [
                       Icon(
                         Icons.music_note,
                         size: 15,
+                        color: AppColors.white,
                       ),
-                      Text('Original Audio - some music track--'),
+                      Text(
+                        'Original Audio - some music track--',
+                        style: TextStyle(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -61,15 +88,15 @@ class OptionsScreen extends StatelessWidget {
                     onTap: (() {}),
                     child: const Icon(
                       Icons.favorite,
-                      size: 40,
+                      size: 30,
                       color: Colors.red,
                     ),
                   ),
                   5.verticalSpace(),
-                  Text(
-                    '1100',
-                    style: const TextStyle(
-                      fontSize: 20,
+                  const Text(
+                    '100',
+                    style: TextStyle(
+                      fontSize: 16,
                       color: Colors.white,
                     ),
                   ),
@@ -78,15 +105,15 @@ class OptionsScreen extends StatelessWidget {
                     onTap: (() {}),
                     child: const Icon(
                       Icons.comment,
-                      size: 40,
+                      size: 30,
                       color: Colors.white,
                     ),
                   ),
                   5.verticalSpace(),
-                  Text(
+                  const Text(
                     '43',
-                    style: const TextStyle(
-                      fontSize: 20,
+                    style: TextStyle(
+                      fontSize: 16,
                       color: Colors.white,
                     ),
                   ),
@@ -95,15 +122,15 @@ class OptionsScreen extends StatelessWidget {
                     onTap: (() {}),
                     child: const Icon(
                       Icons.reply,
-                      size: 40,
+                      size: 30,
                       color: Colors.white,
                     ),
                   ),
                   5.verticalSpace(),
-                  Text(
+                  const Text(
                     '12',
-                    style: const TextStyle(
-                      fontSize: 20,
+                    style: TextStyle(
+                      fontSize: 16,
                       color: Colors.white,
                     ),
                   ),

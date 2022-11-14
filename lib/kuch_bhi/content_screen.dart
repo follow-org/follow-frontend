@@ -60,10 +60,8 @@ class _ContentScreenState extends State<ContentScreen> {
               )
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   CircularProgressIndicator(),
-                  SizedBox(height: 10),
-                  Text('Loading...')
                 ],
               ),
         if (_liked)
