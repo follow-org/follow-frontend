@@ -3,6 +3,8 @@ import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
 
 class OptionsScreen extends StatelessWidget {
+  const OptionsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,7 +51,7 @@ class OptionsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(width: 6),
+                  const SizedBox(width: 6),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
@@ -60,9 +62,9 @@ class OptionsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.music_note,
                         size: 15,

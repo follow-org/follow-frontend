@@ -8,13 +8,12 @@ import 'package:follow_app/views/screens/add_video_screen.dart';
 import 'package:follow_app/views/screens/home/home_page.dart';
 import 'package:follow_app/views/screens/profile_screen.dart';
 import 'package:follow_app/views/screens/search_screen.dart';
-import 'package:follow_app/views/screens/video_screen.dart';
 
 List pages = [
   HomePage(), // Pseudo screen instead of the correct one VideoScreen()
   SearchScreen(),
   const AddVideoScreen(),
-  Text('Messages Screen'),
+  const Text('Messages Screen'),
   // ProfileScreen(uid: authController.user.uid)
   const ProfileScreen()
 ];

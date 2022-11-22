@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
-import 'package:follow_app/views/widgets/custom_icon.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
-import 'package:follow_app/views/screens/profile_screen.dart';
 import 'package:get/get.dart';
 import '../../controllers/search_controller.dart';
 import '../../models/user.dart';

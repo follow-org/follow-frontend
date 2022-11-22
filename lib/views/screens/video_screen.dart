@@ -3,8 +3,6 @@ import 'package:follow_app/controllers/video_controller.dart';
 import 'package:follow_app/helper/util_extensions.dart';
 import 'package:follow_app/views/widgets/video_player_item.dart';
 import 'package:get/get.dart';
-import 'package:video_player/video_player.dart';
-import 'package:video_player/video_player.dart';
 
 import '../widgets/circle_animation.dart';
 

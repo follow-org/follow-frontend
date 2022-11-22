@@ -10,10 +10,10 @@ class ContentScreen extends StatefulWidget {
   const ContentScreen({Key? key, this.src}) : super(key: key);
 
   @override
-  _ContentScreenState createState() => _ContentScreenState();
+  ContentScreenState createState() => ContentScreenState();
 }
 
-class _ContentScreenState extends State<ContentScreen> {
+class ContentScreenState extends State<ContentScreen> {
   late VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
   bool _liked = false;
@@ -65,10 +65,10 @@ class _ContentScreenState extends State<ContentScreen> {
                 ],
               ),
         if (_liked)
-          Center(
+          const Center(
             child: LikeIcon(),
           ),
-        OptionsScreen()
+        const OptionsScreen()
       ],
     );
   }
