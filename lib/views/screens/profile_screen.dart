@@ -69,6 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     20.verticalSpace(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ClipOval(
                           child: CachedNetworkImage(
@@ -82,122 +83,122 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Icons.error,
                             ),
                           ),
-                        )
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              children: const [
+                                Text(
+                                  "20",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Following',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              color: Colors.black54,
+                              width: 1,
+                              height: 15,
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 15,
+                              ),
+                            ),
+                            Column(
+                              children: const [
+                                Text(
+                                  "37",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Followers',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              color: Colors.black54,
+                              width: 1,
+                              height: 15,
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 15,
+                              ),
+                            ),
+                            Column(
+                              children: const [
+                                Text(
+                                  "10",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Subscribers',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                     const SizedBox(
                       height: 15,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: const [
-                            Text(
-                              "20",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              'Following',
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          color: Colors.black54,
-                          width: 1,
-                          height: 15,
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 15,
-                          ),
-                        ),
-                        Column(
-                          children: const [
-                            Text(
-                              "37",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              'Followers',
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          color: Colors.black54,
-                          width: 1,
-                          height: 15,
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 15,
-                          ),
-                        ),
-                        Column(
-                          children: const [
-                            Text(
-                              "10",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              'Subscribers',
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                      width: 140,
-                      height: 47,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black12,
-                        ),
-                      ),
-                      child: Center(
-                        child: InkWell(
-                          onTap: () {
-                            // if (widget.uid == authController.user.uid) {
-                            authController.signOut();
-                            // } else {
-                            //   controller.followUser();
-                            // }
-                          },
-                          child: const Text(
-                            // widget.uid == authController.user.uid
-                            //     ? 'Sign Out'
-                            //     : controller.user['isFollowing']
-                            //         ? 'Unfollow'
-                            //         : 'Follow',
-                            "Sign Out",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Container(
+                    //   width: 140,
+                    //   height: 47,
+                    //   decoration: BoxDecoration(
+                    //     border: Border.all(
+                    //       color: Colors.black12,
+                    //     ),
+                    //   ),
+                    //   child: Center(
+                    //     child: InkWell(
+                    //       onTap: () {
+                    //         // if (widget.uid == authController.user.uid) {
+                    //         authController.signOut();
+                    //         // } else {
+                    //         //   controller.followUser();
+                    //         // }
+                    //       },
+                    //       child: const Text(
+                    //         // widget.uid == authController.user.uid
+                    //         //     ? 'Sign Out'
+                    //         //     : controller.user['isFollowing']
+                    //         //         ? 'Unfollow'
+                    //         //         : 'Follow',
+                    //         "Sign Out",
+                    //         style: TextStyle(
+                    //           fontSize: 15,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     const SizedBox(
                       height: 25,
                     ),

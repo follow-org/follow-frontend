@@ -1,7 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:follow_app/kuch_bhi/like_icon.dart';
-import 'package:follow_app/kuch_bhi/options_screen.dart';
+import 'package:follow_app/views/screens/home/options_screen.dart';
+import 'package:follow_app/views/widgets/like_icon.dart';
 import 'package:video_player/video_player.dart';
 
 class ContentScreen extends StatefulWidget {

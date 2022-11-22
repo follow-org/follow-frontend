@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:follow_app/controllers/auth_controller.dart';
-import 'package:follow_app/kuch_bhi/home_page.dart';
+
 import 'package:follow_app/views/screens/add_video_screen.dart';
+import 'package:follow_app/views/screens/home/home_page.dart';
 import 'package:follow_app/views/screens/profile_screen.dart';
 import 'package:follow_app/views/screens/search_screen.dart';
 import 'package:follow_app/views/screens/video_screen.dart';

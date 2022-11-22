@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
 
-import '../views/widgets/circle_animation.dart';
-
 class OptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
