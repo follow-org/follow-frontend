@@ -2,8 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/controllers/auth_controller.dart';
-import 'package:follow_app/views/screens/auth/login_screen.dart';
-import 'package:follow_app/views/screens/home/home_screen.dart';
 import 'package:follow_app/views/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
 

@@ -23,7 +23,7 @@ class _PlayerControllerState extends State<PlayerController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: MediaQuery.of(context).size.height,
       child: PageView.builder(

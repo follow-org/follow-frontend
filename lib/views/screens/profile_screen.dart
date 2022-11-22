@@ -2,9 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:follow_app/controllers/auth_controller.dart';
 import 'package:follow_app/helper/util_extensions.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
-import '../../constants.dart';
 import '../../controllers/profile_controller.dart';
 
 class ProfileScreen extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:follow_app/constants.dart';
 import 'package:follow_app/helper/util_extensions.dart';
-import 'package:follow_app/views/screens/auth/create_password_screen.dart';
 import 'package:follow_app/views/screens/auth/forgot_password_screen.dart';
 import 'package:follow_app/views/screens/auth/signup_screen.dart';
 import 'package:follow_app/views/screens/home/home_screen.dart';
